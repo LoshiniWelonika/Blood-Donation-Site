@@ -1,5 +1,6 @@
 import "../static/home.css"
 import backgroundImg from "../assets/background.jpg"
+import { Link } from "react-router-dom"
 
 
 const TopicSection = () => {
@@ -15,8 +16,8 @@ const TopicSection = () => {
             <h2>Donate Blood, Save Lives.</h2>
             <p>Every donation is a lifeline. Join our community and make a real difference today.</p>
             <div className="cta-buttons">
-                <a href="/register.html" className="btn btn-primary"><i className="fas fa-hand-holding-heart"></i> Register as Donor</a>
-                <a href="/find.html" className="btn btn-secondary"><i className="fas fa-search"></i> Find Donor</a>
+                <button className="btn btn-primary"><i className="fas fa-hand-holding-heart"></i> <Link to="/signup">Register</Link> </button>
+                <button className="btn btn-secondary"><i className="fas fa-search"></i><Link to="/login">Login</Link></button>
             </div>
         </div>
     </section>

@@ -1,14 +1,17 @@
-import NavBar from './Components/NavBar'; 
-import TopicSection from './Components/TopicSection'; 
-import SecondSection from './Components/SecondSection';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import {Routes, Route} from "react-router-dom";
 import './App.css';
 
 function App() {
   return (
-    <div>
-     <NavBar />
-     <TopicSection />
-     <SecondSection />
+    <div> 
+     <Routes>
+            <Route path="/" element={<Home/>} /> 
+            <Route path="/signup" element={<Login/>} />
+            <Route path="/login" element={<Signup/>} />
+        </Routes>
     </div>
   );
 }
