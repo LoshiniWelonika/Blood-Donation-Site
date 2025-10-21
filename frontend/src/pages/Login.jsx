@@ -3,35 +3,41 @@ import "../static/Login.css"
 
 const Login = () => {
     return(
-        <div className="container">
-        <div className="login-container">
-        <h1 className="header">Log In to Our Site</h1>
+  <div class="page">
+      <div class="card">
+        <h2>Login</h2>
+        <p class="lead">Access your donor or admin account.</p>
 
-        <form> 
-            <div className="input-group">
-                <label htmlFor="email">Email address</label>
-                <div className="input-field-container">
-                    <i className="fa-regular fa-user"></i>
-                    <input type="email" id="email" placeholder="Enter your email" required />
-                </div>
-            </div>
+        <form action="#" method="post">
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required />
+          </div>
 
-            <div className="input-group"> 
-                <label htmlFor="password">Password</label>
-                <div className="input-field-container">
-                    <i className="fa-solid fa-key"></i>
-                    <input type="password" id="password" placeholder="Enter your password" required />
-                </div>
-            </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required />
+          </div>
 
-
-            <button type="submit" className="btn primary-btn">Log in</button>
+          <div class="actions">
+            <button type="submit" class="btn primary">Login</button>
+            <a href="register.html" class="btn ghost">Create Account</a>
+          </div>
         </form>
+      </div>
 
-        <p className="signup-text">
-            Don't have an account?  <Link to="/signup">Sign up</Link>   
-        </p>
-    </div>
+     
+      <aside class="sidebar">
+        <div class="card info">
+          <div class="logo-img"></div>
+          <h3>Welcome Back!</h3>
+          <p>Thank you for being a part of Sri Lanka’s life-saving blood donor community. Please log in to continue.</p>
+        </div>
+
+        <div class="card footer-card">
+          <small>&copy; 2025 Blood Donation Sri Lanka. All Rights Reserved.</small>
+        </div>
+      </aside>
     </div>
     )
 }
