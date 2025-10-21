@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* --- Global Styles & Setup --- */
+:root {
+    --primary-red: #E74C3C; /* Strong red for CTAs and focus */
+    --secondary-blue: #3498DB; /* A complementary color */
+    --text-dark: #2C3E50;
+    --text-light: #ECF0F1;
+    --background-grey: #F8F9FA;
+    --padding-section: 60px 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: white;
+}
+
+a{
+    text-decoration: none;
+    color:white; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+.logo {
+  width:15rem;
+  height: 5rem;
+  margin-left: 40px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-red);
+}
+
+/* --- Buttons (CTA Styles) --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 25px;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn i {
+    margin-right: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-red);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #C0392B; /* Darker red */
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-blue);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #2980B9; /* Darker blue */
+    transform: translateY(-2px);
+}
+
+
+/* --- Hero Section (Banner) --- */
+.hero-section {
+    /* Replace this URL with your actual banner image! */
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the left */
+    color: var(--text-light);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Enhance readability */
+}
+
+.hero-content {
+    padding: 20px 40px;
+    max-width: 600px; /* Limit width of text box */
+    /* Optional: Add a subtle background for text clarity over the image */
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    margin-left: 50px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-weight: normal;
+    color: var(--text-light);
+}
+
+.hero-content p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Ensure buttons wrap on small screens */
+}
+
+
+/* --- Introduction Section --- */
+.intro-section {
+    padding: var(--padding-section);
+    text-align: center;
+    background-color: white;
+}
+
+.intro-section h3 {
+    font-size: 2em;
+    color: var(--primary-red);
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* --- Quick Stats Section --- */
+.stats-section {
+    padding: var(--padding-section);
+    background-color: var(--background-grey);
+    text-align: center;
+}
+
+.stats-section .container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 250px;
+    padding: 30px 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stat-box i {
+    font-size: 2.5em;
+    color: var(--primary-red);
+    margin-bottom: 10px;
+}
+
+.stat-box .number {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.stat-box .label {
+    font-size: 1.1em;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    nav {
+        display: none; /* Hide nav for simple mobile view, can use a hamburger menu */
+    }
+
+    .hero-section {
+        height: 400px;
+        background-position: 70% center; /* Adjust image focus for smaller screens */
+    }
+
+    .hero-content {
+        margin-left: 20px;
+        padding: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content h2 {
+        font-size: 1.4em;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0;
+        justify-content: center;
+    }
+
+    .stats-section .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-box {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
