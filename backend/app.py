@@ -1,14 +1,28 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
+from extentions import db
+from routes.auth_routes import auth_bp
 
 
 app = Flask(__name__)
+CORS(app) 
+app.secret_key = "fslgkjsglkshiw"
+
+
 
 
 #Configure SQLAlchemy
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///blood_donation.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app) 
+db.init_app(app) 
+
+
+app.register_blueprint(auth_bp, url_prefix='/auth')
+
+
+with app.app_context():
+    db.create_all()
 
 
 
