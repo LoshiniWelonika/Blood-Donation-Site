@@ -1,7 +1,53 @@
-import "../static/Login.css"  
+import React, {useState} from "react";
+import "../static/Login.css";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    gender: "", 
+    phone: "",
+    email: "",
+    password: "",
+    blood: "",
+    city: "",
+    province: "",
+    times: "",
+    lastDonatedDate: "",
+    frequency: "",
+    isIllness: "",
+    illnessDescription: "",
+    isMedicine: "",
+    medicineDescription: "",
+    isSurgery: "",
+    surgeryDescription: "",
+  })
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name] : e.target.value})
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+
+    try{
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+    } catch(error){
+      console.error("Error:", error);
+    }
+  }
+
+
+
     return(
   <div className="page">
     <main className="content">
@@ -9,15 +55,15 @@ const Login = () => {
         <h2>Register Now</h2>
         <p className="lead">Become a donor and help save lives — fill the short registration form below.</p>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="field half">
               <label for="name">Name</label>
-              <input id="name" type="text" placeholder="Full name" />
+              <input id="name" type="text" placeholder="Full name" value={formData.name} onChange={handleChange} />
             </div>
             <div className="field half">
               <label for="age">Age</label>
-              <input id="age" type="number" min="16" max="100" placeholder="Age" />
+              <input id="age" type="number" min="16" max="100" placeholder="Age" value={formData.age} onChange={handleChange}/>
             </div>
           </div>
 
@@ -25,32 +71,32 @@ const Login = () => {
             <div className="field half">
               <label>Gender</label>
               <div className="radio-group">
-                <label className="radio"><input type="radio" name="gender" value="male"/> Male</label>
-                <label className="radio"><input type="radio" name="gender" value="female"/> Female</label>
-                <label className="radio"><input type="radio" name="gender" value="other"/> Other</label>
+                <label className="radio"><input type="radio" name="gender" value="male" chacked={formData.gender === "Male"} onChange={handleChange}/> Male</label>
+                <label className="radio"><input type="radio" name="gender" value="female" chacked={formData.gender === "Female"} onChange={handleChange}/> Female</label>
+                <label className="radio"><input type="radio" name="gender" value="other" chacked={formData.gender === "Other"} onChange={handleChange}/> Other</label>
               </div>
             </div>
             <div className="field half">
               <label for="phone">Phone</label>
-              <input id="phone" type="text" placeholder="07x-xxxxxxx" />
+              <input id="phone" type="text" placeholder="07x-xxxxxxx" value={formData.phone} onChange={handleChange}/>
             </div>
           </div>
 
           <div className="row">
             <div className="field half">
               <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@example.com" />
+              <input id="email" type="email" placeholder="you@example.com" value={formData.email} onChange={handleChange}/>
             </div>
             <div className="field half">
               <label for="password">Password</label>
-              <input id="password" type="password" placeholder="Choose a password" />
+              <input id="password" type="password" placeholder="Choose a password" value={formData.password} onChange={handleChange}/>
             </div>
           </div>
 
           <div className="row">
             <div className="field half">
               <label for="blood">Blood Type</label>
-              <select id="blood">
+              <select id="blood" value={formData.blood} onChange={handleChange}>
                 <option value="">Select Blood Type</option>
                 <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
                 <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
@@ -58,13 +104,13 @@ const Login = () => {
             </div>
             <div className="field half">
               <label for="city">City</label>
-              <input id="city" type="text" placeholder="City" />
+              <input id="city" type="text" placeholder="City" value={formData.city} onChange={handleChange}/>
             </div>
           </div>
 
           <div className="field">
             <label for="province">Province</label>
-            <select id="province">
+            <select id="province" value={formData.province} onChange={handleChange}>
               <option value="">Select Province</option>
               <option>Central Province</option>
               <option>Eastern Province</option>
@@ -81,53 +127,62 @@ const Login = () => {
           <div className="row">
             <div className="field half">
               <label for="times">Number of Times Donated</label>
-              <input id="times" type="number" min="0" placeholder="0" />
+              <input id="times" type="number" min="0" placeholder="0" value={formData.times} onChange={handleChange}/>
             </div>
             <div className="field half">
-              <label for="last">Last Donated Date</label>
-              <input id="last" type="date" />
+              <label for="lastDonatedDate">Last Donated Date</label>
+              <input id="lastDonatedDate" type="date" />
             </div>
           </div>
 
           <div className="field">
             <label>I would like to Donate Blood</label>
             <div className="radio-group">
-              <label className="radio"><input type="radio" name="freq"/> Every 4 Months</label>
-              <label className="radio"><input type="radio" name="freq"/> Every 6 Months</label>
-              <label className="radio"><input type="radio" name="freq"/> Once a Year</label>
+              <label className="radio"><input type="radio" name="frequency" chacked={formData.frequency === "4 months"} onChange={handleChange}/> Every 4 Months</label>
+              <label className="radio"><input type="radio" name="frequency" chacked={formData.frequency === "6 months"} onChange={handleChange}/> Every 6 Months</label>
+              <label className="radio"><input type="radio" name="frequency" chacked={formData.frequency === "year"} onChange={handleChange}/> Once a Year</label>
             </div>
           </div>
 
           <div className="row">
             <div className="field half">
               <label>Are you suffering from any long term illness?</label>
-              <div className="radio-group"><label className="radio"><input type="radio" name="illness"/> Yes</label><label className="radio"><input type="radio" name="illness"/> No</label></div>
+              <div className="radio-group">
+                <label className="radio"><input type="radio" name="isIllness" chacked={formData.isIllness === "Yes"} onChange={handleChange}/> Yes</label>
+                <label className="radio"><input type="radio" name="isIllness" chacked={formData.isIllness === "No"} onChange={handleChange}/> No</label>
+              </div>
             </div>
             <div className="field half">
-              <label for="illnessdesc">Describe the Illness</label>
-              <input id="illnessdesc" type="text" placeholder="If yes, describe" />
+              <label for="illnessDescription">Describe the Illness</label>
+              <input id="illnessDescription" type="text" placeholder="If yes, describe" value={formData.illnessDescription} onChange={handleChange}/>
             </div>
           </div>
 
           <div className="row">
             <div className="field half">
               <label>Are you taking any medicine?</label>
-              <div className="radio-group"><label className="radio"><input type="radio" name="meds"/> Yes</label><label className="radio"><input type="radio" name="meds"/> No</label></div>
+              <div className="radio-group">
+                <label className="radio"><input type="radio" name="isMedicine" chacked={formData.isMedicine === "Yes"} onChange={handleChange}/> Yes</label>
+                <label className="radio"><input type="radio" name="isMedicine" chacked={formData.isMedicine === "No"} onChange={handleChange}/> No</label>             
+              </div>
             </div>
             <div className="field half">
-              <label for="meddesc">Description</label>
-              <input id="meddesc" type="text" placeholder="If yes, describe" />
+              <label for="medicineDescription">Description</label>
+              <input id="medicineDescription" type="text" placeholder="If yes, describe" value={formData.medicineDescription} onChange={handleChange}/>
             </div>
           </div>
 
           <div className="row">
             <div className="field half">
               <label>Have you undergone any surgery?</label>
-              <div className="radio-group"><label className="radio"><input type="radio" name="surg"/> Yes</label><label className="radio"><input type="radio" name="surg"/> No</label></div>
+              <div className="radio-group">
+                <label className="radio"><input type="radio" name="isSurgery" chacked={formData.isSurgery === "Yes"} onChange={handleChange}/> Yes</label>
+                <label className="radio"><input type="radio" name="isSurgery" chacked={formData.isSurgery === "No"} onChange={handleChange}/> No</label>              
+              </div>
             </div>
             <div className="field half">
-              <label for="surgdesc">Description</label>
-              <input id="surgdesc" type="text" placeholder="If yes, describe" />
+              <label for="surgeryDescription">Description</label>
+              <input id="surgeryDescription" type="text" placeholder="If yes, describe" value={formData.surgeryDescription} onChange={handleChange}/>
             </div>
           </div>
 
