@@ -14,7 +14,7 @@ const RegistrationSuccess = () => {
         <p>
           Thank you for joining us. Now you can start your journey.
         </p>
-        <button className="login-btn" onClick={() => navigate("/login")}>
+        <button className="login-btn" onClick={() => navigate("/donordashboard")}>
           Go to Dashboard
         </button>
       </div>
