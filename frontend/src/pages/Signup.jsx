@@ -59,11 +59,13 @@ const Login = () => {
           <div className="row">
             <div className="field half">
               <label for="name">Name</label>
-              <input id="name" type="text" placeholder="Full name" value={formData.name} onChange={handleChange} />
+              <input id="name" type="text" placeholder="Full name" name="name"
+              value={formData.name} onChange={handleChange} />
             </div>
             <div className="field half">
               <label for="age">Age</label>
-              <input id="age" type="number" min="16" max="100" placeholder="Age" value={formData.age} onChange={handleChange}/>
+              <input id="age" type="number" min="16" max="100" placeholder="Age" name="age"
+              value={formData.age} onChange={handleChange}/>
             </div>
           </div>
 
@@ -78,25 +80,28 @@ const Login = () => {
             </div>
             <div className="field half">
               <label for="phone">Phone</label>
-              <input id="phone" type="text" placeholder="07x-xxxxxxx" value={formData.phone} onChange={handleChange}/>
+              <input id="phone" type="text" placeholder="07x-xxxxxxx" name="phone"
+              value={formData.phone} onChange={handleChange}/>
             </div>
           </div>
 
           <div className="row">
             <div className="field half">
               <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@example.com" value={formData.email} onChange={handleChange}/>
+              <input id="email" type="email" placeholder="you@example.com" name="email"
+              value={formData.email} onChange={handleChange}/>
             </div>
             <div className="field half">
               <label for="password">Password</label>
-              <input id="password" type="password" placeholder="Choose a password" value={formData.password} onChange={handleChange}/>
+              <input id="password" type="password" placeholder="Choose a password" name="password"
+              value={formData.password} onChange={handleChange}/>
             </div>
           </div>
 
           <div className="row">
             <div className="field half">
               <label for="blood">Blood Type</label>
-              <select id="blood" value={formData.blood} onChange={handleChange}>
+              <select id="blood" name="blood" value={formData.blood} onChange={handleChange}>
                 <option value="">Select Blood Type</option>
                 <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
                 <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
@@ -104,13 +109,14 @@ const Login = () => {
             </div>
             <div className="field half">
               <label for="city">City</label>
-              <input id="city" type="text" placeholder="City" value={formData.city} onChange={handleChange}/>
+              <input id="city" type="text" placeholder="City" name="city"
+              value={formData.city} onChange={handleChange}/>
             </div>
           </div>
 
           <div className="field">
             <label for="province">Province</label>
-            <select id="province" value={formData.province} onChange={handleChange}>
+            <select id="province" name="province" value={formData.province} onChange={handleChange}>
               <option value="">Select Province</option>
               <option>Central Province</option>
               <option>Eastern Province</option>
@@ -127,11 +133,12 @@ const Login = () => {
           <div className="row">
             <div className="field half">
               <label for="times">Number of Times Donated</label>
-              <input id="times" type="number" min="0" placeholder="0" value={formData.times} onChange={handleChange}/>
+              <input id="times" type="number" min="0" placeholder="0" name="times"
+              value={formData.times} onChange={handleChange}/>
             </div>
             <div className="field half">
               <label for="lastDonatedDate">Last Donated Date</label>
-              <input id="lastDonatedDate" type="date" />
+              <input id="lastDonatedDate" type="date" name="lastDonatedDate"/>
             </div>
           </div>
 
@@ -154,7 +161,8 @@ const Login = () => {
             </div>
             <div className="field half">
               <label for="illnessDescription">Describe the Illness</label>
-              <input id="illnessDescription" type="text" placeholder="If yes, describe" value={formData.illnessDescription} onChange={handleChange}/>
+              <input id="illnessDescription" type="text" placeholder="If yes, describe" name="illnessDescription"
+              value={formData.illnessDescription} onChange={handleChange}/>
             </div>
           </div>
 
@@ -168,7 +176,8 @@ const Login = () => {
             </div>
             <div className="field half">
               <label for="medicineDescription">Description</label>
-              <input id="medicineDescription" type="text" placeholder="If yes, describe" value={formData.medicineDescription} onChange={handleChange}/>
+              <input id="medicineDescription" type="text" placeholder="If yes, describe" name="medicineDescription"
+              value={formData.medicineDescription} onChange={handleChange}/>
             </div>
           </div>
 
@@ -182,7 +191,8 @@ const Login = () => {
             </div>
             <div className="field half">
               <label for="surgeryDescription">Description</label>
-              <input id="surgeryDescription" type="text" placeholder="If yes, describe" value={formData.surgeryDescription} onChange={handleChange}/>
+              <input id="surgeryDescription" type="text" placeholder="If yes, describe" name="surgeryDescription"
+              value={formData.surgeryDescription} onChange={handleChange}/>
             </div>
           </div>
 
