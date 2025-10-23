@@ -53,7 +53,7 @@ const Signup = () => {
       console.log("Response data:", data);
 
       if (response.ok) {
-        navigate("/successMessage"); // navigate on successful registration
+        navigate("/successMessage", { state:  {userId: data.user_id} }); // navigate on successful registration
       } else {
         alert(data.error || "Registration failed");
       }
