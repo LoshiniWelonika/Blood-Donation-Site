@@ -7,6 +7,7 @@ from routes.auth_routes import auth_bp
 
 app = Flask(__name__)
 CORS(app) 
+
 app.secret_key = "fslgkjsglkshiw"
 
 
