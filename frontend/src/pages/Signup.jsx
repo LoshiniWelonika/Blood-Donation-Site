@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../static/Login.css";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -24,7 +27,14 @@ const Signup = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+
+    // Handle radio buttons (checked => set value)
+    if (type === "radio") {
+      setFormData({ ...formData, [name]: value });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -37,10 +47,19 @@ const Signup = () => {
         },
         body: JSON.stringify(formData),
       });
+
       const data = await response.json();
-      console.log("Server Response:", data);
+      console.log("Response status:", response.status);
+      console.log("Response data:", data);
+
+      if (response.ok) {
+        navigate("/successMessage"); // navigate on successful registration
+      } else {
+        alert(data.error || "Registration failed");
+      }
     } catch (error) {
       console.error("Error:", error);
+      alert("Something went wrong. Try again!");
     }
   };
 
@@ -61,10 +80,11 @@ const Signup = () => {
                 <input
                   id="name"
                   type="text"
-                  placeholder="Full name"
                   name="name"
+                  placeholder="Full name"
                   value={formData.name}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="field half">
@@ -72,12 +92,13 @@ const Signup = () => {
                 <input
                   id="age"
                   type="number"
+                  name="age"
                   min="16"
                   max="100"
                   placeholder="Age"
-                  name="age"
                   value={formData.age}
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -87,36 +108,19 @@ const Signup = () => {
               <div className="field half">
                 <label>Gender</label>
                 <div className="radio-group">
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Male"
-                      checked={formData.gender === "Male"}
-                      onChange={handleChange}
-                    />{" "}
-                    Male
-                  </label>
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Female"
-                      checked={formData.gender === "Female"}
-                      onChange={handleChange}
-                    />{" "}
-                    Female
-                  </label>
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Other"
-                      checked={formData.gender === "Other"}
-                      onChange={handleChange}
-                    />{" "}
-                    Other
-                  </label>
+                  {["Male", "Female", "Other"].map((g) => (
+                    <label key={g} className="radio">
+                      <input
+                        type="radio"
+                        name="gender"
+                        value={g}
+                        checked={formData.gender === g}
+                        onChange={handleChange}
+                        required
+                      />{" "}
+                      {g}
+                    </label>
+                  ))}
                 </div>
               </div>
               <div className="field half">
@@ -124,10 +128,11 @@ const Signup = () => {
                 <input
                   id="phone"
                   type="text"
-                  placeholder="07x-xxxxxxx"
                   name="phone"
+                  placeholder="07x-xxxxxxx"
                   value={formData.phone}
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -139,10 +144,11 @@ const Signup = () => {
                 <input
                   id="email"
                   type="email"
-                  placeholder="you@example.com"
                   name="email"
+                  placeholder="you@example.com"
                   value={formData.email}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div className="field half">
@@ -150,10 +156,11 @@ const Signup = () => {
                 <input
                   id="password"
                   type="password"
-                  placeholder="Choose a password"
                   name="password"
+                  placeholder="Choose a password"
                   value={formData.password}
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -167,16 +174,12 @@ const Signup = () => {
                   name="blood"
                   value={formData.blood}
                   onChange={handleChange}
+                  required
                 >
                   <option value="">Select Blood Type</option>
-                  <option>A+</option>
-                  <option>A-</option>
-                  <option>B+</option>
-                  <option>B-</option>
-                  <option>AB+</option>
-                  <option>AB-</option>
-                  <option>O+</option>
-                  <option>O-</option>
+                  {["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"].map((b) => (
+                    <option key={b} value={b}>{b}</option>
+                  ))}
                 </select>
               </div>
               <div className="field half">
@@ -184,10 +187,11 @@ const Signup = () => {
                 <input
                   id="city"
                   type="text"
-                  placeholder="City"
                   name="city"
+                  placeholder="City"
                   value={formData.city}
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>
@@ -200,17 +204,22 @@ const Signup = () => {
                 name="province"
                 value={formData.province}
                 onChange={handleChange}
+                required
               >
                 <option value="">Select Province</option>
-                <option>Central Province</option>
-                <option>Eastern Province</option>
-                <option>Northern Province</option>
-                <option>North Central Province</option>
-                <option>North Western Province</option>
-                <option>Sabaragamuwa Province</option>
-                <option>Southern Province</option>
-                <option>Uva Province</option>
-                <option>Western Province</option>
+                {[
+                  "Central Province",
+                  "Eastern Province",
+                  "Northern Province",
+                  "North Central Province",
+                  "North Western Province",
+                  "Sabaragamuwa Province",
+                  "Southern Province",
+                  "Uva Province",
+                  "Western Province",
+                ].map((p) => (
+                  <option key={p} value={p}>{p}</option>
+                ))}
               </select>
             </div>
 
@@ -221,9 +230,9 @@ const Signup = () => {
                 <input
                   id="times"
                   type="number"
+                  name="times"
                   min="0"
                   placeholder="0"
-                  name="times"
                   value={formData.times}
                   onChange={handleChange}
                 />
@@ -244,158 +253,62 @@ const Signup = () => {
             <div className="field">
               <label>I would like to Donate Blood</label>
               <div className="radio-group">
-                <label className="radio">
-                  <input
-                    type="radio"
-                    name="frequency"
-                    value="4 months"
-                    checked={formData.frequency === "4 months"}
-                    onChange={handleChange}
-                  />{" "}
-                  Every 4 Months
-                </label>
-                <label className="radio">
-                  <input
-                    type="radio"
-                    name="frequency"
-                    value="6 months"
-                    checked={formData.frequency === "6 months"}
-                    onChange={handleChange}
-                  />{" "}
-                  Every 6 Months
-                </label>
-                <label className="radio">
-                  <input
-                    type="radio"
-                    name="frequency"
-                    value="year"
-                    checked={formData.frequency === "year"}
-                    onChange={handleChange}
-                  />{" "}
-                  Once a Year
-                </label>
+                {["4 months", "6 months", "year"].map((f) => (
+                  <label key={f} className="radio">
+                    <input
+                      type="radio"
+                      name="frequency"
+                      value={f}
+                      checked={formData.frequency === f}
+                      onChange={handleChange}
+                      required
+                    />{" "}
+                    {f === "year" ? "Once a Year" : `Every ${f}`}
+                  </label>
+                ))}
               </div>
             </div>
 
-            {/* Illness */}
-            <div className="row">
-              <div className="field half">
-                <label>Are you suffering from any long term illness?</label>
-                <div className="radio-group">
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="isIllness"
-                      value="Yes"
-                      checked={formData.isIllness === "Yes"}
-                      onChange={handleChange}
-                    />{" "}
-                    Yes
+            {/* Illness, Medicine, Surgery */}
+            {["isIllness", "isMedicine", "isSurgery"].map((field) => (
+              <div className="row" key={field}>
+                <div className="field half">
+                  <label>
+                    {field === "isIllness"
+                      ? "Are you suffering from any long term illness?"
+                      : field === "isMedicine"
+                      ? "Are you taking any medicine?"
+                      : "Have you undergone any surgery?"}
                   </label>
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="isIllness"
-                      value="No"
-                      checked={formData.isIllness === "No"}
-                      onChange={handleChange}
-                    />{" "}
-                    No
-                  </label>
+                  <div className="radio-group">
+                    {["Yes", "No"].map((option) => (
+                      <label key={option} className="radio">
+                        <input
+                          type="radio"
+                          name={field}
+                          value={option}
+                          checked={formData[field] === option}
+                          onChange={handleChange}
+                          required
+                        />{" "}
+                        {option}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <div className="field half">
+                  <label htmlFor={`${field}Description`}>Description</label>
+                  <input
+                    id={`${field}Description`}
+                    type="text"
+                    name={`${field}Description`}
+                    placeholder="If yes, describe"
+                    value={formData[`${field}Description`]}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
-              <div className="field half">
-                <label htmlFor="illnessDescription">Describe the Illness</label>
-                <input
-                  id="illnessDescription"
-                  type="text"
-                  placeholder="If yes, describe"
-                  name="illnessDescription"
-                  value={formData.illnessDescription}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            {/* Medicine */}
-            <div className="row">
-              <div className="field half">
-                <label>Are you taking any medicine?</label>
-                <div className="radio-group">
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="isMedicine"
-                      value="Yes"
-                      checked={formData.isMedicine === "Yes"}
-                      onChange={handleChange}
-                    />{" "}
-                    Yes
-                  </label>
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="isMedicine"
-                      value="No"
-                      checked={formData.isMedicine === "No"}
-                      onChange={handleChange}
-                    />{" "}
-                    No
-                  </label>
-                </div>
-              </div>
-              <div className="field half">
-                <label htmlFor="medicineDescription">Description</label>
-                <input
-                  id="medicineDescription"
-                  type="text"
-                  placeholder="If yes, describe"
-                  name="medicineDescription"
-                  value={formData.medicineDescription}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-
-            {/* Surgery */}
-            <div className="row">
-              <div className="field half">
-                <label>Have you undergone any surgery?</label>
-                <div className="radio-group">
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="isSurgery"
-                      value="Yes"
-                      checked={formData.isSurgery === "Yes"}
-                      onChange={handleChange}
-                    />{" "}
-                    Yes
-                  </label>
-                  <label className="radio">
-                    <input
-                      type="radio"
-                      name="isSurgery"
-                      value="No"
-                      checked={formData.isSurgery === "No"}
-                      onChange={handleChange}
-                    />{" "}
-                    No
-                  </label>
-                </div>
-              </div>
-              <div className="field half">
-                <label htmlFor="surgeryDescription">Description</label>
-                <input
-                  id="surgeryDescription"
-                  type="text"
-                  placeholder="If yes, describe"
-                  name="surgeryDescription"
-                  value={formData.surgeryDescription}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
+            ))}
 
             <div className="actions">
               <button type="submit" className="btn primary">
@@ -408,32 +321,32 @@ const Signup = () => {
           </form>
         </section>
 
+        {/* Sidebar Info */}
         <aside className="sidebar">
-        {/* Info Card */}
-        <div className="card info">
-          <img src="/images/logo.png" alt="logo" className="logo-img" />
-          <h3>Need Blood?</h3>
-          <p>
-            If you need blood or want to donate in Sri Lanka, register and get notified when there's a match.
-          </p>
-          <p className="availability">24x7 — 365 Days</p>
-        </div>
+          <div className="card info">
+            <img src="/images/logo.png" alt="logo" className="logo-img" />
+            <h3>Need Blood?</h3>
+            <p>
+              If you need blood or want to donate in Sri Lanka, register and get notified when there's a match.
+            </p>
+            <p className="availability">24x7 — 365 Days</p>
+          </div>
 
-        {/* Contact Card */}
-        <div className="card">
-          <h4>Contact</h4>
-          <p>contact@blooddonation.lk</p>
-          <p>
-            Sri Lanka · <a href="https://goo.gl/maps/" target="_blank" rel="noopener noreferrer">Map link</a>
-          </p>
-        </div>
+          <div className="card">
+            <h4>Contact</h4>
+            <p>contact@blooddonation.lk</p>
+            <p>
+              Sri Lanka ·{" "}
+              <a href="https://goo.gl/maps/" target="_blank" rel="noopener noreferrer">
+                Map link
+              </a>
+            </p>
+          </div>
 
-        {/* Footer Card */}
-        <div className="card footer-card">
-          <small>© 2024 All Rights Reserved by Blood Finder</small>
-        </div>
-      </aside>
-
+          <div className="card footer-card">
+            <small>© 2024 All Rights Reserved by Blood Finder</small>
+          </div>
+        </aside>
       </main>
     </div>
   );

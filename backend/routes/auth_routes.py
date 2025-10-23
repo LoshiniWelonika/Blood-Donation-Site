@@ -56,7 +56,7 @@ def register():
         db.session.commit()
         session['name'] = name
 
-        return jsonify({"New User Registered": name})
+        return jsonify({"message":"New User Registered"}), 201
 
     
 
