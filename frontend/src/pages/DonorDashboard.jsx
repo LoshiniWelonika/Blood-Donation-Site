@@ -1,111 +1,98 @@
 import React from 'react';
-import "../static/dashboard.css" 
+import "../static/dashboard.css";
 
 const DonorDashboard = () => {
   return (
-  <div class="container">
-    <div class="card-wrapper">
+    <div className="container">
+      <div className="card-wrapper">  
 
-      <nav class="navigation">
-        <div class="logo">
-          <div class="logo-icon red"></div>
-          <div class="logo-icon yellow"></div>
-          <div class="logo-icon green"></div>
-          <div class="logo-icon blue"></div>
-        </div>
-        <div class="nav-buttons">
-          <button class="nav-btn active">
-            <span class="icon">🏠</span>
-            Dashboard
-          </button>
-          <button class="nav-btn">
-            <span class="icon">📅</span>
-            Events
-          </button>
-          <button class="nav-btn">
-            <span class="icon">👤</span>
-            Profile
-          </button>
-          <button class="nav-btn">
-            <span class="icon">⚙️</span>
-            Settings
-          </button>
-        </div>
-      </nav>
-
-    
-      <header class="header">
-        <div class="header-left">
-          <h1>Dashboard</h1>
-        </div>
-        <div class="header-right">
-          <button class="icon-btn">
-            <span class="icon">🔔</span>
-            <span class="badge">3</span>
-          </button>
-          <div class="avatar avatar-user">J</div>
-        </div>
-      </header>
-
-     
-      <div class="metrics-grid">
-
-     
-        <div class="metric-card default">
-          <div class="metric-header">
-            <p class="metric-title">Profile Details</p>
+        {/* Header */}
+        <header className="header">
+          <div className="header-left">
+            <h1>Dashboard</h1>
           </div>
-          <div class="metric-content profile-content">
-            <p><strong>Name:</strong> John Doe</p>
-            <p><strong>Blood Type:</strong> O+</p>
-            <p><strong>City:</strong> Colombo</p>
-            <p><strong>Province:</strong> Western Province</p>
-            <p><strong>Total Donations:</strong> 5</p>
-            <p><strong>Next Eligible Donation:</strong> 2025-12-10</p>
-          </div>
-        </div>
+        </header>
 
-        <div class="metric-card default">
-          <div class="metric-header">
-            <p class="metric-title">Upcoming Events</p>
-          </div>
-          <div class="metric-content events-content">
+        {/* Main Content */}
+        <div className="metrics-grid">
 
-            <div class="event-card">
-              <div class="event-details">
-                <p><strong>Event:</strong> Blood Donation Camp - Colombo</p>
-                <p><strong>Date:</strong> 2025-11-05</p>
-                <p><strong>Time:</strong> 9:00 AM - 5:00 PM</p>
+          {/* Profile Section */}
+          <div className="metric-card default">
+            <div className="profile-card">
+              <div className="profile-header">
+                <h2>Profile</h2>
               </div>
-              <button class="btn">Mark Attendance</button>
-            </div>
 
-            <div class="event-card">
-              <div class="event-details">
-                <p><strong>Event:</strong> University Blood Drive</p>
-                <p><strong>Date:</strong> 2025-11-20</p>
-                <p><strong>Time:</strong> 10:00 AM - 4:00 PM</p>
+              <div className="profile-details">
+                <div className="detail-item">
+                  <label>Name</label>
+                  <p>John Doe</p>
+                </div>
+                <div className="detail-item">
+                  <label>Email</label>
+                  <p>john@example.com</p>
+                </div>
+                <div className="detail-item">
+                  <label>Location</label>
+                  <p>Colombo</p>
+                </div>
+                <div className="detail-item">
+                  <label>Blood Type</label>
+                  <p>O+</p>
+                </div>
+                <div className="detail-item">
+                  <label>Province</label>
+                  <p>Western Province</p>
+                </div>
+                <div className="detail-item">
+                  <label>Total Donations</label>
+                  <p>5</p>
+                </div>
+                <div className="detail-item">
+                  <label>Next Eligible Donation</label>
+                  <p>2025-12-10</p>
+                </div>
               </div>
-              <button class="btn">Mark Attendance</button>
             </div>
-
-            <div class="event-card">
-              <div class="event-details">
-                <p><strong>Event:</strong> Community Health Camp</p>
-                <p><strong>Date:</strong> 2025-12-01</p>
-                <p><strong>Time:</strong> 8:30 AM - 3:30 PM</p>
-              </div>
-              <button class="btn">Mark Attendance</button>
-            </div>
-
           </div>
-        </div>
 
-      </div>
-    </div>
-  </div>
+          {/* Events Section */}
+          <div className="metric-card default">
+            <section className="events-section">
+              <h2>Upcoming Events</h2>
 
-  )
-}
+              <div className="events-grid">
+                <div className="event-card">
+                  <div className="event-image">🩸</div>
+                  <div className="event-content">
+                    <h3>Blood Donation Drive at City Hall</h3>
+                    <div className="event-meta">
+                      <span><i className="fa-regular fa-user"></i> Red Cross Society</span>
+                      <span><i className="fa-regular fa-clock"></i> 2 days left</span>
+                    </div>
+                    <button className="btn attend-btn">Mark Attendance</button>
+                  </div>
+                </div>
+
+                <div className="event-card">
+                  <div className="event-image">🏥</div>
+                  <div className="event-content">
+                    <h3>Community Health Awareness Camp</h3>
+                    <div className="event-meta">
+                      <span><i className="fa-regular fa-user"></i> Health Org</span>
+                      <span><i className="fa-regular fa-clock"></i> 1 week left</span>
+                    </div>
+                    <button className="btn attend-btn">Mark Attendance</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div> {/* end metrics-grid */}
+      </div> {/* end card-wrapper */}
+    </div>   /* end container */
+  );
+};
 
 export default DonorDashboard;
