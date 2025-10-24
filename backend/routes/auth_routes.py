@@ -1,5 +1,4 @@
-from flask import Blueprint, request, redirect, url_for, jsonify, session
-from werkzeug.security import generate_password_hash
+from flask import Blueprint, request, jsonify, session
 from extentions import db
 from models.user_model import User
 
@@ -27,10 +26,11 @@ def register():
     isSurgery = data.get("isSurgery")
     surgeryDescription = data.get("surgeryDescription")
 
-    user = User.query.filter_by(name=name).first()
+    existing_user = User.query.filter_by(email=email).first()
 
-    if user:
-        return jsonify({"error":"User already exists"})
+    if existing_user:
+        return jsonify({"error": "User already exists"}), 400
+    
     else:
         new_user = User(
             name=name,
@@ -59,6 +59,22 @@ def register():
         return jsonify({"message":"New User Registered",
                         "user_id": new_user.id}), 201
 
-    
+
+@auth_bp.route('/login', methods=["POST"])
+def login():
+    data = request.get_json()
+    email = data.get("email")
+    password = data.get("password")  
+
+    user = User.query.filter_by(email=email).first()
+
+    if user and user.check_password(password):
+        session['user_id'] = user.id
+        session['user_name'] = user.name
+
+        return jsonify({"message":"User Successfully Logged In",
+                        "user_id": user.id}), 200
+    else:
+        return jsonify({"error":"Invalid email or password"})
 
 
