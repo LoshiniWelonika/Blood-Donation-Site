@@ -14,7 +14,7 @@ function App() {
             <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/successMessage" element={<RegistrationSuccess />} />
-            <Route path="/donordashboard" element={<DonorDashboard />} />
+            <Route path="/donordashboard/:userId" element={<DonorDashboard />} />
         </Routes>
     </div>
   );

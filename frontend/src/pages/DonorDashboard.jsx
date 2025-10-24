@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import "../static/dashboard.css";
+import { useLocation } from "react-router-dom";
+import ProfileDetails from "../Components/ProfileDetails";
 
 const DonorDashboard = () => {
+  const location = useLocation();
+  const { userId } = location.state || {}; // get userId passed from registration success
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    fetch(`http://127.0.0.1:5000/api/user/${userId}`)
+      .then((response) => response.json())
+      .then((data) => setUser(data))
+      .catch((error) => console.error("Error fetching user:", error));
+  }, [userId]);
+
+  if (!user) return <p>Loading...</p>;
+
   return (
     <div className="container">
-      <div className="card-wrapper">  
-
+      <div className="card-wrapper">
         {/* Header */}
         <header className="header">
           <div className="header-left">
             <h1>Dashboard</h1>
+            <h3>Welcome, {user.name} 👋</h3>
           </div>
         </header>
 
         {/* Main Content */}
         <div className="metrics-grid">
-
           {/* Profile Section */}
           <div className="metric-card default">
             <div className="profile-card">
@@ -23,36 +39,9 @@ const DonorDashboard = () => {
                 <h2>Profile</h2>
               </div>
 
-              <div className="profile-details">
-                <div className="detail-item">
-                  <label>Name</label>
-                  <p>John Doe</p>
-                </div>
-                <div className="detail-item">
-                  <label>Email</label>
-                  <p>john@example.com</p>
-                </div>
-                <div className="detail-item">
-                  <label>Location</label>
-                  <p>Colombo</p>
-                </div>
-                <div className="detail-item">
-                  <label>Blood Type</label>
-                  <p>O+</p>
-                </div>
-                <div className="detail-item">
-                  <label>Province</label>
-                  <p>Western Province</p>
-                </div>
-                <div className="detail-item">
-                  <label>Total Donations</label>
-                  <p>5</p>
-                </div>
-                <div className="detail-item">
-                  <label>Next Eligible Donation</label>
-                  <p>2025-12-10</p>
-                </div>
-              </div>
+              {Object.entries(user).map(([key, value]) => (
+                <ProfileDetails key={key} title={key} content={value} />
+              ))}
             </div>
           </div>
 
@@ -67,8 +56,8 @@ const DonorDashboard = () => {
                   <div className="event-content">
                     <h3>Blood Donation Drive at City Hall</h3>
                     <div className="event-meta">
-                      <span><i className="fa-regular fa-user"></i> Red Cross Society</span>
-                      <span><i className="fa-regular fa-clock"></i> 2 days left</span>
+                      <span>Red Cross Society</span>
+                      <span>2 days left</span>
                     </div>
                     <button className="btn attend-btn">Mark Attendance</button>
                   </div>
@@ -79,8 +68,8 @@ const DonorDashboard = () => {
                   <div className="event-content">
                     <h3>Community Health Awareness Camp</h3>
                     <div className="event-meta">
-                      <span><i className="fa-regular fa-user"></i> Health Org</span>
-                      <span><i className="fa-regular fa-clock"></i> 1 week left</span>
+                      <span>Health Org</span>
+                      <span>1 week left</span>
                     </div>
                     <button className="btn attend-btn">Mark Attendance</button>
                   </div>
@@ -88,10 +77,9 @@ const DonorDashboard = () => {
               </div>
             </section>
           </div>
-
-        </div> {/* end metrics-grid */}
-      </div> {/* end card-wrapper */}
-    </div>   /* end container */
+        </div>
+      </div>
+    </div>
   );
 };
 

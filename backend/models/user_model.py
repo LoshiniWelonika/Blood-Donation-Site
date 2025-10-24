@@ -27,3 +27,25 @@ class User(db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password) 
+    
+    def to_dict(self):
+        return{
+                "id": self.id,
+                "name": self.name,
+                "age": self.age,
+                "gender": self.gender,
+                "phone": self.phone,
+                "email": self.email,
+                "blood": self.blood,
+                "city": self.city,
+                "province": self.province,
+                "times": self.times,
+                "lastDonatedDate": self.lastDonatedDate,
+                "frequency": self.frequency,
+                "isIllness": self.isIllness,
+                "illnessDescription": self.illnessDescription,
+                "isMedicine": self.isMedicine,
+                "medicineDescription": self.medicineDescription,
+                "isSurgery": self.isSurgery,
+                "surgeryDescription": self.surgeryDescription
+        }

@@ -2,7 +2,9 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from extentions import db
-from routes.auth_routes import auth_bp
+from routes.auth_routes import auth_bp 
+from routes.user_routes import user_bp 
+
 
 
 app = Flask(__name__)
@@ -20,6 +22,7 @@ db.init_app(app)
 
 
 app.register_blueprint(auth_bp, url_prefix='/auth')
+app.register_blueprint(user_bp, url_prefix='/api')
 
 
 with app.app_context():

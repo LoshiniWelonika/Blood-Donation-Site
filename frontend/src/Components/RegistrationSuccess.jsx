@@ -11,7 +11,7 @@ const RegistrationSuccess = () => {
 
   const directToDashboard = () => {
     if (userId) {
-      navigate(`/donordashboard/${userId}`);
+      navigate(`/donordashboard/${userId}`, { state:  {userId: userId} });
     } else {
       alert("User ID not found!");
     }
