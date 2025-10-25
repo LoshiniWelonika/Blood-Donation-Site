@@ -6,7 +6,7 @@ import DonorDashboard from './pages/DonorDashboard';
 import {Routes, Route} from "react-router-dom";
 import './App.css';
 
-function App() {
+function App() { 
   return (
     <div> 
      <Routes>
