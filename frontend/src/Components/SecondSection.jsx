@@ -1,6 +1,7 @@
 import "../static/home.css";
 import SectionHeader from "./SectionHeader";
 import nursePhoto from "../assets/nurse.png";
+import FeatureCard from "./FeatureCard";
 
 const SecondSection = () => {
     return (
@@ -23,11 +24,41 @@ const SecondSection = () => {
                         </p>
                         <button className="btn btn-secondary">Learn more</button>
                     </div>
-                    <img src={nursePhoto} alt="" />
+                    <img src={nursePhoto} alt="Nurse" />
                 </div>
             </div>
-    </section>
+
+            <SectionHeader topic="SERVICES" caption="Our Main Services" />
+
+            <div className="feature container">
+                <div className="features-grid">
+                    <FeatureCard className="feature-card feature-highlighted" 
+                                icon="For Recepients" 
+                                title= "Find Donors" 
+                                desc="Quickly search and connect with nearby blood donors when you need it most."
+                                req="Find Donors"/>
+
+                    <FeatureCard className="feature-card" 
+                                icon="For Recepients" 
+                                title= "Post Emergency Blood Requests" 
+                                desc="Submit urgent blood requests so nearby donors can respond quickly."
+                                req="Post Request"/>
+
+                    <FeatureCard className="feature-card feature-highlighted" 
+                                icon="For Donors" 
+                                title= "Join With Our Donor Community" 
+                                desc="Sign up easily to become a blood donor and make a life-saving impact."
+                                req="Register Now"/>
+                    
+                    <FeatureCard className="feature-card" 
+                                icon="For Donors" 
+                                title= "Health Tips & Awareness" 
+                                desc="Learn important tips and guidelines to stay healthy and donate safely."
+                                req="Learn More"/>
+                </div>
+            </div>
+        </section>
     );
 };
 
-export default SecondSection; 
+export default SecondSection;

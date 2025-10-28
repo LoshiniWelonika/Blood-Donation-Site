@@ -412,6 +412,7 @@ body {
     padding: 48px;
     box-shadow: 0 10px 40px var(--shadow);
     width: 70vw;
+    margin-bottom: 50px;
 }
 
 @media (min-width: 768px) {
