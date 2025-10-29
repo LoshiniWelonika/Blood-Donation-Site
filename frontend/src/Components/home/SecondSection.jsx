@@ -1,6 +1,6 @@
-import "../static/home.css";
+import "../../static/home.css";
 import SectionHeader from "./SectionHeader";
-import nursePhoto from "../assets/nurse.png";
+import nursePhoto from "../../assets/nurse.png";
 import FeatureCard from "./FeatureCard";
 
 const SecondSection = () => {
@@ -30,7 +30,6 @@ const SecondSection = () => {
 
             <SectionHeader topic="SERVICES" caption="Our Main Services" />
 
-            <div className="feature container">
                 <div className="features-grid">
                     <FeatureCard className="feature-card feature-highlighted" 
                                 icon="For Recepients" 
@@ -56,7 +55,7 @@ const SecondSection = () => {
                                 desc="Learn important tips and guidelines to stay healthy and donate safely."
                                 req="Learn More"/>
                 </div>
-            </div>
+            
         </section>
     );
 };

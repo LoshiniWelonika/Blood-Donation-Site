@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../static/dashboard.css";
 import { useLocation } from "react-router-dom";
-import ProfileDetails from "../Components/ProfileDetails";
+import ProfileDetails from "../Components/dashboard/ProfileDetails";
 
 const DonorDashboard = () => {
   const location = useLocation();

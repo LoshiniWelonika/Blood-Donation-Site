@@ -1,5 +1,5 @@
-import "../static/home.css";
-import backgroundImg from "../assets/background.jpg";
+import "../../static/home.css";
+import backgroundImg from "../../assets/background.jpg";
 import { Link } from "react-router-dom"; 
 
 const TopicSection = () => {
