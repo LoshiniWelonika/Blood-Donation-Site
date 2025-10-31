@@ -62,16 +62,6 @@ body {
     gap: 8px;
 }
 
-.logo-icon {
-    color: var(--primary);
-}
-
-.logo-text {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--primary);
-}
-
 .nav-links {
     display: none;
     gap: 32px;
@@ -217,11 +207,18 @@ body {
 }
 
 /* Features Section */
+#services{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 10px;
+}
 .features-section {
     padding: 0 0 64px;
     margin-top: -64px;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     

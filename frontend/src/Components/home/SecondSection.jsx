@@ -5,7 +5,8 @@ import FeatureCard from "./FeatureCard";
 
 const SecondSection = () => {
     return (
-        <section className="speciality-section">
+        <>
+        <section className="speciality-section" id="about">
             <SectionHeader topic="ABOUT" caption="About Us" />
             <div className="speciality-cards">
                 <div className="speciality-card speciality-primary">
@@ -27,10 +28,12 @@ const SecondSection = () => {
                     <img src={nursePhoto} alt="Nurse" />
                 </div>
             </div>
+            </section>
 
-            <SectionHeader topic="SERVICES" caption="Our Main Services" />
-
+             <section id="services">
+             <SectionHeader topic="SERVICES" caption="Our Main Services"/>
                 <div className="features-grid">
+           
                     <FeatureCard className="feature-card feature-highlighted" 
                                 icon="For Recepients" 
                                 title= "Find Donors" 
@@ -55,8 +58,8 @@ const SecondSection = () => {
                                 desc="Learn important tips and guidelines to stay healthy and donate safely."
                                 req="Learn More"/>
                 </div>
-            
-        </section>
+              </section>
+        </>
     );
 };
 

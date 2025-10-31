@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../static/Login.css";
+import logo from "../assets/logo.png";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -324,7 +325,7 @@ const Signup = () => {
         {/* Sidebar Info */}
         <aside className="sidebar">
           <div className="card info">
-            <img src="/images/logo.png" alt="logo" className="logo-img" />
+            <img src={logo} alt="logo" className="logo-img" />
             <h3>Need Blood?</h3>
             <p>
               If you need blood or want to donate in Sri Lanka, register and get notified when there's a match.
