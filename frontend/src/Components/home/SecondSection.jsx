@@ -38,7 +38,8 @@ const SecondSection = () => {
                                 icon="For Recepients" 
                                 title= "Find Donors" 
                                 desc="Quickly search and connect with nearby blood donors when you need it most."
-                                req="Find Donors"/>
+                                req="Find Donors"
+                                destination="/findDonors"/>
 
                     <FeatureCard className="feature-card" 
                                 icon="For Recepients" 

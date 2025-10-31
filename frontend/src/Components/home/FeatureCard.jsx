@@ -1,4 +1,6 @@
-const FeatureCard = ({className, icon, title, desc, req}) => {
+import { Link } from "react-router-dom";
+
+const FeatureCard = ({className, icon, title, desc, req, destination}) => {
     return (
         <div className={className}>
                         <div className="feature-icon">
@@ -6,7 +8,7 @@ const FeatureCard = ({className, icon, title, desc, req}) => {
                         </div>
                         <h3 className="feature-title">{title}</h3>
                         <p className="feature-description">{desc}</p>
-                        <button className="btn btn-primary btn-sm">{req}</button>
+                        <Link to={destination} className="btn btn-primary btn-sm">{req}</Link>
         </div>
     )
 }
