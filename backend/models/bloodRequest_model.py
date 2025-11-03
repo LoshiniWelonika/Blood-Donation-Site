@@ -1,6 +1,6 @@
 from extentions import db 
 
-class Request(db.Model): 
+class BloodRequest(db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     patient_name = db.Column(db.String(30), unique=True, nullable=False)
     blood = db.Column(db.String(4), nullable=False)
