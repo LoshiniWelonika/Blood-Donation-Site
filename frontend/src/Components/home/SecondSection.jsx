@@ -45,7 +45,8 @@ const SecondSection = () => {
                                 icon="For Recepients" 
                                 title= "Post Emergency Blood Requests" 
                                 desc="Submit urgent blood requests so nearby donors can respond quickly."
-                                req="Post Request"/>
+                                req="Post Request"
+                                destination="/bloodRequest"/>
 
                     <FeatureCard className="feature-card feature-highlighted" 
                                 icon="For Donors" 
