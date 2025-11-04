@@ -19,7 +19,7 @@
 /* ------------------------------
    Layout Containers
 ------------------------------ */
-.container {
+.dashboard-container {
    background: var(--background-light);
   color: var(--text-dark);
   margin: 0;
@@ -42,7 +42,7 @@
 /* ------------------------------
    Header
 ------------------------------ */
-.header {
+.dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -111,7 +111,7 @@
 }
 
 .metric-card {
-  background: var(--white);
+  background: #faaecc;
   border-radius: var(--radius-large);
   box-shadow: 0 6px 16px var(--shadow);
   padding: 25px;

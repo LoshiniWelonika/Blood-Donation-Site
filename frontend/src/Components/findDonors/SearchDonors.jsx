@@ -21,8 +21,8 @@ const SearchDonors = () => {
   return (
     <>
       {/* Search Form Section */}
-      <div className="page">
-        <div className="card">
+      <div className="search-page">
+        <div className="search-card">
           <h2>Find Blood Donors</h2>
           <p className="lead">Find and contact the blood donors quickly and easily.</p>
 

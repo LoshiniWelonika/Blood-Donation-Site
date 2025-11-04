@@ -32,3 +32,10 @@ def bloodRequest():
 
     return jsonify ({"message":"New Blood Request Posted",
                      "patient_name": new_bloodRequest.patient_name}), 201
+
+
+@request_bp.route('/allRequests', methods=['GET'])
+def getRequests():
+    bloodRequests = BloodRequest.query.all() 
+
+    return jsonify([bRequest.to_dict() for bRequest in bloodRequests])

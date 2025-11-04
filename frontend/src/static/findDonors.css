@@ -18,7 +18,7 @@
 /* ===============================
    Base Styles
 =============================== */
-.page {
+.serach-page {
   font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   background: linear-gradient(135deg, #eaa4a4, #ff5252);
   color: #111;
@@ -87,7 +87,7 @@ nav.top a:hover {
 /* ===============================
    Card Styles
 =============================== */
-.card {
+.search-card {
   background: var(--card);
   border-radius: 12px;
   padding: 20px;

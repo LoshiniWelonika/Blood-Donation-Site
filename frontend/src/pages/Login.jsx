@@ -1,5 +1,6 @@
 import {Link, useNavigate} from "react-router-dom";
 import { useState } from "react";
+import logo from "../assets/logo.png";
 import "../static/Login.css"  
 
 const Login = () => {
@@ -73,7 +74,7 @@ const Login = () => {
      
       <aside class="sidebar">
         <div class="card info">
-          <div class="logo-img"></div>
+          <img src={logo} alt="logo" className="logo-img" />
           <h3>Welcome Back!</h3>
           <p>Thank you for being a part of Sri Lanka’s life-saving blood donor community. Please log in to continue.</p>
         </div>

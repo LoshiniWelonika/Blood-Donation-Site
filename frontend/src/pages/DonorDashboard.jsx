@@ -20,10 +20,10 @@ const DonorDashboard = () => {
   if (!user) return <p>Loading...</p>;
 
   return (
-    <div className="container">
+    <div className="dashboard-container">
       <div className="card-wrapper">
         {/* Header */}
-        <header className="header">
+        <header className="dashboard-header">
           <div className="header-left">
             <h1>Dashboard</h1>
             <h3>Welcome, {user.name} 👋</h3>
@@ -48,20 +48,10 @@ const DonorDashboard = () => {
           {/* Events Section */}
           <div className="metric-card default">
             <section className="events-section">
-              <h2>Upcoming Events</h2>
+              <h2>Emergency Blood Requests</h2>
 
               <div className="events-grid">
-                <div className="event-card">
-                  <div className="event-image">🩸</div>
-                  <div className="event-content">
-                    <h3>Blood Donation Drive at City Hall</h3>
-                    <div className="event-meta">
-                      <span>Red Cross Society</span>
-                      <span>2 days left</span>
-                    </div>
-                    <button className="btn attend-btn">Mark Attendance</button>
-                  </div>
-                </div>
+                
 
                 <div className="event-card">
                   <div className="event-image">🏥</div>

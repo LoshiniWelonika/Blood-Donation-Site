@@ -5,7 +5,7 @@ class BloodRequest(db.Model):
     patient_name = db.Column(db.String(30), unique=True, nullable=False)
     blood = db.Column(db.String(4), nullable=False)
     urgency = db.Column(db.String(50), nullable=False)
-    quantity = db.Column(db.Integer, nullable=False)
+    quantity = db.Column(db.String, nullable=False)
     hospital = db.Column(db.String(60), nullable=False)
     contact_person = db.Column(db.String(30), nullable=False)
     phone = db.Column(db.String(10), nullable=False)
