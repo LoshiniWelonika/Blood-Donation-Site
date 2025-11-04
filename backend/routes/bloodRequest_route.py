@@ -39,3 +39,11 @@ def getRequests():
     bloodRequests = BloodRequest.query.all() 
 
     return jsonify([bRequest.to_dict() for bRequest in bloodRequests])
+
+@request_bp.route('/bloodRequest/<int:id>', methods=['GET'])
+def get_bloodRequest(id):
+    bloodReq = BloodRequest.query.get(id)
+    if bloodReq:
+        return jsonify(bloodReq.to_dict())
+    else:
+        return jsonify({"error":"Couldn't find the details"})
