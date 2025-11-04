@@ -5,6 +5,7 @@ import RegistrationSuccess from './Components/RegistrationSuccess';
 import DonorDashboard from './pages/DonorDashboard';
 import FindDonors from './pages/FindDonors';
 import EmergencyBloodRequest from './pages/EmergencyBloodRequest';
+import HealthTips from './pages/HealthTips';
 import {Routes, Route} from "react-router-dom";
 import './App.css';
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/donordashboard/:userId" element={<DonorDashboard />} />
             <Route path="/findDonors" element={<FindDonors />} />
             <Route path="/bloodRequest" element={<EmergencyBloodRequest />} />
+            <Route path="/healthTips" element={<HealthTips />} />
         </Routes>
     </div>
   );

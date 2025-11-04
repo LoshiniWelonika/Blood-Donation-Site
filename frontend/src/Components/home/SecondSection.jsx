@@ -52,13 +52,15 @@ const SecondSection = () => {
                                 icon="For Donors" 
                                 title= "Join With Our Donor Community" 
                                 desc="Sign up easily to become a blood donor and make a life-saving impact."
-                                req="Register Now"/>
+                                req="Register Now"
+                                destination="/signup"/>
                     
                     <FeatureCard className="feature-card" 
                                 icon="For Donors" 
                                 title= "Health Tips & Awareness" 
                                 desc="Learn important tips and guidelines to stay healthy and donate safely."
-                                req="Learn More"/>
+                                req="Learn More"
+                                destination="/healthTips"/>
                 </div>
               </section>
         </>
