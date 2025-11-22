@@ -7,6 +7,7 @@ const ThirdSection = () => {
   return (
     <>
       <section
+        id="why-donate"
         className="hero-section"
         style={{ backgroundImage: `url(${eventImg})` }}
       >
@@ -32,7 +33,7 @@ const ThirdSection = () => {
 
       <SectionHeader topic="EVENTS" caption="Upcoming Events" />
 
-      <section className="events-section">
+      <section id="events" className="events-section">
         <div className="events-grid">
             <EventCard 
                 img={"https://i.pinimg.com/1200x/ca/55/0c/ca550cc93e5f09dd7b8fe16ba54104f5.jpg"}

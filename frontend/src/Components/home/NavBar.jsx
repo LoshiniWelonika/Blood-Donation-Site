@@ -3,6 +3,14 @@ import "../../static/home.css";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-content">
@@ -11,11 +19,11 @@ const NavBar = () => {
         </div>
 
         <div className="nav-links">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#doctors">Doctors</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
+          <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About</a>
+          <a href="#services" onClick={(e) => scrollToSection(e, 'services')}>Services</a>
+          <a href="#why-donate" onClick={(e) => scrollToSection(e, 'why-donate')}>Why Donate</a>
+          <a href="#events" onClick={(e) => scrollToSection(e, 'events')}>Events</a>
+          <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>Contact</a> 
         </div>
 
         <div className="button-line">
