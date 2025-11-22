@@ -213,11 +213,6 @@ label {
   gap: 8px;
 }
 
-label::before {
-  content: '🩸';
-  font-size: 18px;
-}
-
 input[type="text"],
 input[type="email"],
 input[type="number"],

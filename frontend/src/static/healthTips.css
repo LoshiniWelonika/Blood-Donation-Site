@@ -1,3 +1,29 @@
+/* ===============================
+   CSS Variables
+=============================== */
+:root {
+  --primary: #e85d75;
+  --primary-dark: #d64764;
+  --primary-light: #ffb3c1;
+  --accent: #ff8fa3;
+  --secondary: #6366f1;
+  --secondary-light: #818cf8;
+  --white: #ffffff;
+  --bg-gradient: linear-gradient(135deg, #fef3f5 0%, #f8f9fc 100%);
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.15);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -6,10 +32,11 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    color: #262626;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-dark);
     line-height: 1.6;
-    background-color: #ffffff;
+    background: var(--bg-gradient);
+    -webkit-font-smoothing: antialiased;
 }
 
 .ht-container {
@@ -97,148 +124,337 @@ body {
 
 /* Hero Section */
 .ht-hero {
-    padding: 80px 0;
+    padding: 120px 0 80px;
+    background: var(--bg-gradient);
+    position: relative;
+    overflow: hidden;
+}
+
+.ht-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(232, 93, 117, 0.08), transparent);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
 }
 
 .ht-hero-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 80px;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .ht-hero-label {
     text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 1px;
-    color: #737373;
-    margin-bottom: 8px;
-    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-weight: 700;
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(232, 93, 117, 0.1);
+    border-radius: 20px;
 }
 
 .ht-hero-title {
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 56px;
+    font-weight: 800;
     margin-bottom: 24px;
-    color: #262626;
+    color: var(--text-dark);
+    line-height: 1.2;
 }
 
 .ht-title-underline {
     display: block;
-    width: 64px;
-    height: 4px;
-    background-color: #ef4444;
-    margin-top: 16px;
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    margin-top: 20px;
+    border-radius: 3px;
+    animation: expandWidth 1s ease-out;
 }
 
 .ht-hero-text {
-    color: #737373;
+    color: var(--text-muted);
+    font-size: 17px;
+    line-height: 1.8;
 }
 
 .ht-hero-text p {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.ht-hero-image {
+    position: relative;
 }
 
 .ht-hero-image img {
     width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
+    max-width: 550px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 3px solid var(--white);
+    transition: var(--transition);
+}
+
+.ht-hero-image img:hover {
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 25px 60px rgba(232, 93, 117, 0.25);
 }
 
 /* Health Tips Section */
 .ht-health-tips {
-    background-color: #f5f5f5;
-    padding: 80px 0;
+    background: linear-gradient(180deg, var(--bg-gradient), #ffffff);
+    padding: 100px 0;
+    position: relative;
+}
+
+.ht-health-tips::before {
+    content: '❤️';
+    position: absolute;
+    top: 60px;
+    left: 8%;
+    font-size: 100px;
+    opacity: 0.05;
 }
 
 .ht-section-header {
     text-align: center;
     max-width: 900px;
-    margin: 0 auto 60px;
+    margin: 0 auto 70px;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .ht-section-header h2 {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    color: #262626;
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+}
+
+.ht-section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
 }
 
 .ht-section-header p {
-    color: #737373;
-    font-size: 16px;
+    color: var(--text-muted);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-top: 24px;
 }
 
 .ht-tips-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-    margin-bottom: 48px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 32px;
+    margin-bottom: 56px;
 }
 
 .ht-tip-card {
-    background-color: white;
-    padding: 32px;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s;
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border: 2px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.ht-tip-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.ht-tip-card:hover::before {
+    transform: scaleX(1);
 }
 
 .ht-tip-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+    border-color: var(--primary-light);
 }
 
+.ht-tip-card:nth-child(1) { animation-delay: 0.1s; }
+.ht-tip-card:nth-child(2) { animation-delay: 0.2s; }
+.ht-tip-card:nth-child(3) { animation-delay: 0.3s; }
+.ht-tip-card:nth-child(4) { animation-delay: 0.4s; }
+.ht-tip-card:nth-child(5) { animation-delay: 0.5s; }
+
 .ht-tip-icon {
-    background-color: rgba(239, 68, 68, 0.1);
-    width: 56px;
-    height: 56px;
+    background: linear-gradient(135deg, rgba(232, 93, 117, 0.15), rgba(255, 179, 193, 0.15));
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.ht-tip-card:hover .ht-tip-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, rgba(232, 93, 117, 0.25), rgba(255, 179, 193, 0.25));
 }
 
 .ht-tip-icon i {
-    color: #ef4444;
-    font-size: 24px;
+    color: var(--primary);
+    font-size: 28px;
 }
 
 .ht-tip-content h3 {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #262626;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-dark);
 }
 
 .ht-tip-content p,
 .ht-tip-content ul {
-    color: #737373;
-    font-size: 14px;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.ht-tip-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ht-tip-content ul li {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.ht-tip-content ul li::before {
+    content: '🩸';
+    position: absolute;
+    left: 0;
+    font-size: 16px;
 }
 
 .ht-tip-note {
-    color: #ef4444 !important;
-    font-size: 12px !important;
-    font-weight: 500;
-    margin-top: 12px !important;
+    color: var(--primary) !important;
+    font-size: 14px !important;
+    font-weight: 600;
+    margin-top: 16px !important;
+    padding: 12px;
+    background: rgba(232, 93, 117, 0.08);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--primary);
 }
 
 .ht-hemoglobin-card {
-    background-color: white;
-    padding: 32px;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: var(--white);
+    padding: 48px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
     display: flex;
-    gap: 24px;
-    margin-bottom: 48px;
+    gap: 32px;
+    margin-bottom: 56px;
+    border: 2px solid var(--border);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.ht-hemoglobin-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+}
+
+.ht-hemoglobin-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-light);
+}
+
+.ht-hemoglobin-card .ht-tip-content h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.ht-hemoglobin-card .ht-tip-content p {
+    font-size: 16px;
 }
 
 .ht-remember-box {
     text-align: center;
-    background-color: rgba(239, 68, 68, 0.05);
-    padding: 48px;
-    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(232, 93, 117, 0.1), rgba(255, 179, 193, 0.1));
+    padding: 56px 48px;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--primary-light);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.ht-remember-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+    background-size: 200% 100%;
+    animation: gradientShift 3s ease infinite;
+}
+
+.ht-remember-box h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.ht-remember-box p {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.ht-remember-box strong {
+    color: var(--primary);
+    font-weight: 700;
 }
 
 /* Footer */
@@ -258,30 +474,136 @@ body {
     list-style: none;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* ===============================
+   Animations
+=============================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100px;
+    }
+}
+
+/* ===============================
+   Responsive Design
+=============================== */
+@media (max-width: 900px) {
     .ht-nav-links {
         display: none;
+    }
+
+    .ht-hero {
+        padding: 100px 0 60px;
     }
 
     .ht-hero-container,
     .ht-footer-container {
         grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .ht-hero-title {
+        font-size: 44px;
+    }
+
+    .ht-section-header h2 {
+        font-size: 36px;
+    }
+
+    .ht-health-tips {
+        padding: 80px 0;
+    }
+
+    .ht-tips-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .ht-hemoglobin-card {
+        flex-direction: column;
+        gap: 24px;
+        padding: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ht-hero {
+        padding: 80px 0 50px;
     }
 
     .ht-hero-title {
         font-size: 36px;
     }
 
-    .ht-section-header h2 {
-        font-size: 32px;
+    .ht-hero-text {
+        font-size: 15px;
     }
 
-    .ht-tips-grid {
-        grid-template-columns: 1fr;
+    .ht-section-header h2 {
+        font-size: 30px;
+    }
+
+    .ht-section-header p {
+        font-size: 16px;
+    }
+
+    .ht-tip-card {
+        padding: 28px;
+    }
+
+    .ht-tip-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ht-tip-icon i {
+        font-size: 24px;
     }
 
     .ht-hemoglobin-card {
-        flex-direction: column;
+        padding: 28px;
+    }
+
+    .ht-remember-box {
+        padding: 40px 28px;
+    }
+
+    .ht-remember-box h3 {
+        font-size: 24px;
+    }
+
+    .ht-remember-box p {
+        font-size: 16px;
     }
 }
