@@ -13,7 +13,7 @@ function Home() {
      <SecondSection />
      <ThirdSection />
      <Footer />
-    </div>
+    </div> 
   );
 }
 
